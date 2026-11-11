@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/*
+  디자인 토큰 — 디자인을 바꾸려면 여기 값만 고치면 됩니다.
+  여기서 정의한 이름은 Tailwind 클래스로 바로 쓸 수 있어요.
+  예) --color-dark → bg-dark, --color-soft → bg-soft
+*/
+@theme {
+  /* ── 테마: 차콜 앰버 ── */
+
+  /* 어두운 면: 히어로, 어두운 패널, 푸터, 어두운 배경 위 테두리 */
+  --color-dark: #141416;
+  --color-panel-dark: #202125;
+  --color-footer: #1a1b1e;
+  --color-line-dark: #36373c;
+
+  /* 밝은 패널 (따뜻한 미색) */
+  --color-soft: #f6f2ea;
+
+  /* 글자색 */
+  --color-fg: #1f2023;
+  --color-muted: #6b6862;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #b4b0a8;
+
+  /* 포인트 색 (밝은 배경용 / 어두운 배경용) */
+  --color-accent: #b45309;
+  --color-accent-light: #fbbf24;
+
+  /* 밝은 배경 위 구분선 */
+  --color-line: #e7e1d6;
+
+  --font-sans: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
+
+  /* 패널 모서리 */
+  --radius-panel: 28px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-dark text-fg font-sans antialiased;
+  word-break: keep-all;
+}
+
+/* 상단 고정 네비게이션에 섹션 제목이 가려지지 않도록 */
+section {
+  scroll-margin-top: 4rem;
+}
+
+/* ───────── 스크롤 효과 ───────── */
+
+/* 화면에 들어올 때 아래에서 떠오르며 나타남 (Reveal 컴포넌트) */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* 첫 화면 진입: 글자가 차례로 떠오름 */
+.hero-intro {
+  animation: hero-in 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+/* 첫 화면 진입: 배경이 살짝 줌아웃 */
+.hero-bg {
+  animation: hero-bg-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes hero-bg-in {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+/* 스크롤 안내 점 */
+.scroll-dot {
+  animation: scroll-dot 1.6s ease-in-out infinite;
+}
+@keyframes scroll-dot {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* 움직임 줄이기 설정을 켠 사용자에게는 효과를 끔 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-intro,
+  .hero-bg,
+  .scroll-dot {
+    animation: none;
+  }
+}
