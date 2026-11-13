@@ -6,7 +6,7 @@ import SectionTitle from "../components/SectionTitle";
 export default function Experience() {
   return (
     <Panel id="experience" tone="light">
-      <SectionTitle eyebrow="Experience">걸어온 길</SectionTitle>
+      <SectionTitle eyebrow="Experience">경력</SectionTitle>
       <ol className="relative space-y-12 border-l-2 border-line pl-8 sm:pl-10">
         {profile.experience.map((e) => (
           <Reveal as="li" key={`${e.company}-${e.period}`} className="relative">

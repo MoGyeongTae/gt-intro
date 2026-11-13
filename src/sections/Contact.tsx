@@ -9,11 +9,8 @@ export default function Contact() {
   return (
     <Panel id="contact" tone="dark">
       <SectionTitle eyebrow="Contact" dark>
-        함께 이야기해요
+        연락처
       </SectionTitle>
-      <Reveal as="p" className="max-w-xl text-lg leading-relaxed text-on-dark-muted">
-        협업, 채용, 질문 모두 편하게 연락 주세요.
-      </Reveal>
       <Reveal delay={120} className="mt-10 flex flex-wrap gap-3 text-sm font-semibold">
         {email && (
           <a
