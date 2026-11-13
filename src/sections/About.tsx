@@ -7,7 +7,7 @@ export default function About() {
   return (
     <Panel id="about" tone="dark">
       <SectionTitle eyebrow="About" dark>
-        저를 소개합니다
+        소개
       </SectionTitle>
       <div className="max-w-3xl space-y-5 text-lg leading-relaxed text-on-dark-muted">
         {profile.about.map((p, i) => (

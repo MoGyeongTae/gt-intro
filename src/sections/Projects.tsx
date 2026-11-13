@@ -6,7 +6,7 @@ import SectionTitle from "../components/SectionTitle";
 export default function Projects() {
   return (
     <Panel id="projects" tone="soft">
-      <SectionTitle eyebrow="Projects">만든 것들</SectionTitle>
+      <SectionTitle eyebrow="Projects">그 외 프로젝트</SectionTitle>
       <div className="grid gap-5 sm:grid-cols-2">
         {profile.projects.map((p, i) => (
           <Reveal

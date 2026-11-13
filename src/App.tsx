@@ -14,9 +14,9 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Skills />
         <Experience />
         <Projects />
-        <Skills />
         <Contact />
       </main>
       <footer className="relative -mt-(--radius-panel) rounded-t-(--radius-panel) bg-footer text-on-dark-muted">

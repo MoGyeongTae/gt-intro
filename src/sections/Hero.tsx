@@ -58,30 +58,24 @@ export default function Hero() {
         <p className="hero-intro text-sm font-semibold tracking-wide text-accent-light">
           안녕하세요
         </p>
-        <h1
-          className="hero-intro mt-4 text-4xl leading-tight font-bold sm:text-6xl"
-          style={{ animationDelay: "120ms" }}
-        >
-          {profile.name}입니다.
-        </h1>
         <p
           className="hero-intro mt-6 max-w-xl text-lg leading-relaxed text-on-dark-muted sm:text-xl"
           style={{ animationDelay: "240ms" }}
         >
           {profile.tagline}
         </p>
+        <h1
+          className="hero-intro mt-4 text-4xl leading-tight font-bold sm:text-6xl"
+          style={{ animationDelay: "120ms" }}
+        >
+          {profile.name}입니다.
+        </h1>
         <div className="hero-intro mt-10 flex flex-wrap gap-3" style={{ animationDelay: "360ms" }}>
           <a
             href="#projects"
             className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-panel-dark transition-opacity hover:opacity-90"
           >
             프로젝트 보기
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-line-dark px-6 py-3 text-sm font-semibold text-on-dark transition-colors hover:bg-white/10"
-          >
-            연락하기
           </a>
         </div>
       </div>
