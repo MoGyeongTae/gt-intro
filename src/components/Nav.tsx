@@ -3,9 +3,9 @@ import { profile } from "../data/profile";
 
 const links = [
   { href: "#about", label: "소개" },
-  { href: "#experience", label: "기술" },
-  { href: "#projects", label: "경력" },
-  { href: "#skills", label: "프로젝트" },
+  { href: "#skills", label: "기술" },
+  { href: "#experience", label: "경력" },
+  { href: "#projects", label: "프로젝트" },
   { href: "#contact", label: "연락처" },
 ];
 
