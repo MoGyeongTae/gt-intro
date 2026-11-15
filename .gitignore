@@ -6,3 +6,9 @@ dist
 !.vscode/extensions.json
 .idea
 *.log
+
+# 로고 원본 백업 (로컬 보관용, 레포에는 올리지 않음)
+assets-src/
+
+# 로컬에 설치한 Claude Code 스킬 (개발 도구, 레포에는 올리지 않음)
+.claude/skills/
