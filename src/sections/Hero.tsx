@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { profile } from "../data/profile";
+import HeroBackdrop from "../components/HeroBackdrop";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -45,34 +46,45 @@ export default function Hero() {
       id="top"
       className="sticky top-0 flex min-h-svh items-center overflow-hidden bg-dark text-on-dark"
     >
-      {/* 배경 장식: 은은한 빛과 격자. 처음 들어올 때 살짝 줌아웃됩니다. */}
-      <div aria-hidden className="hero-bg pointer-events-none absolute inset-0">
-        <div
-          ref={glowRef}
-          className="absolute -top-1/4 right-[-15%] h-[70vmax] w-[70vmax] rounded-full bg-[radial-gradient(closest-side,rgb(251_191_36/0.16),transparent)]"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(rgb(255_255_255/0.04)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.04)_1px,transparent_1px)] bg-size-[56px_56px] mask-[radial-gradient(ellipse_at_70%_40%,black,transparent_70%)]" />
-      </div>
+      {/* 배경: 흐르는 오로라 + 커서 스포트라이트. 처음 들어올 때 살짝 줌아웃됩니다. */}
+      <HeroBackdrop auroraRef={glowRef} />
 
       <div ref={contentRef} className="relative mx-auto w-full max-w-5xl px-6 pt-16 pb-24 sm:px-10">
-        <p className="hero-intro text-sm font-semibold tracking-wide text-accent-light">
-          안녕하세요
-        </p>
-        <p
-          className="hero-intro mt-6 max-w-xl text-lg leading-relaxed text-on-dark-muted sm:text-xl"
-          style={{ animationDelay: "240ms" }}
-        >
-          {profile.tagline}
-        </p>
-        <h1
-          className="hero-intro mt-4 text-4xl leading-tight font-bold sm:text-6xl"
-          style={{ animationDelay: "120ms" }}
-        >
-          {profile.name}입니다.
-        </h1>
+        {/*
+          코드(읽는) 순서: 안녕하세요 → 이름(h1) → 소개 문구
+            - 스크린리더가 "안녕하세요, 모경태입니다, 디테일을…" 순으로 자연스럽게 읽음
+          화면(보이는) 순서: 안녕하세요 → 소개 문구 → 이름  (order로 자리만 바꿈)
+          등장 애니메이션은 화면 순서대로 위에서 아래로 120ms씩
+        */}
+        <div className="flex flex-col">
+          {/* 코드 주석처럼 보이는 인사말 (// 는 장식이라 스크린리더에서 숨김) */}
+          <p className="hero-intro font-mono text-sm font-semibold tracking-wide text-accent-light sm:text-base">
+            <span aria-hidden className="mr-2 text-on-dark-muted/60">
+              //
+            </span>
+            안녕하세요
+          </p>
+          {/* 이름만 앰버 그라디언트 + 한 번 빛이 훑고 지나감, 끝에 깜빡이는 커서 */}
+          <h1
+            className="hero-intro order-3 mt-4 text-5xl leading-tight font-bold tracking-tight sm:text-7xl"
+            style={{ animationDelay: "240ms" }}
+          >
+            <span className="name-shine">{profile.name}</span>입니다.
+            <span
+              aria-hidden
+              className="caret ml-2 inline-block h-[0.85em] w-[0.1em] translate-y-[0.1em] rounded-sm bg-accent-light"
+            />
+          </h1>
+          <p
+            className="hero-intro order-2 mt-6 max-w-xl text-lg leading-relaxed text-on-dark-muted sm:text-xl"
+            style={{ animationDelay: "120ms" }}
+          >
+            {profile.tagline}
+          </p>
+        </div>
         <div className="hero-intro mt-10 flex flex-wrap gap-3" style={{ animationDelay: "360ms" }}>
           <a
-            href="#projects"
+            href="#experience"
             className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-panel-dark transition-opacity hover:opacity-90"
           >
             프로젝트 보기

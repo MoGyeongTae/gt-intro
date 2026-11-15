@@ -61,7 +61,9 @@ function getObserver() {
           reveal(el);
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+      // threshold는 0: 요소가 조금이라도 화면(아래 8% 제외)에 들어오면 나타납니다.
+      // 비율(예: 0.15)로 하면 화면보다 아주 긴 요소는 그 비율을 영영 못 채워 안 나타날 수 있어요.
+      { threshold: 0, rootMargin: "0px 0px -8% 0px" },
     );
     window.addEventListener("scroll", onScroll, { passive: true });
   }

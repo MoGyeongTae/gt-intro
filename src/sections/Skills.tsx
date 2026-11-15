@@ -6,11 +6,11 @@ import SectionTitle from "../components/SectionTitle";
 export default function Skills() {
   return (
     <Panel id="skills" tone="light">
-      <SectionTitle eyebrow="Skills">다루는 기술</SectionTitle>
+      <SectionTitle eyebrow="Skills">기술</SectionTitle>
       <dl className="divide-y divide-line border-y border-line">
         {Object.entries(profile.skills).map(([group, items]) => (
           <Reveal key={group} className="py-6 sm:flex sm:items-center sm:gap-8">
-            <dt className="w-32 shrink-0 font-bold">{group}</dt>
+            <dt className="w-38 shrink-0 font-bold">{group}</dt>
             <dd className="mt-3 flex flex-wrap gap-2 sm:mt-0">
               {items.map((s) => (
                 <span

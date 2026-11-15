@@ -49,9 +49,9 @@ export default function Panel({
     // (긴 패널은 위쪽이 화면 밖에 있으므로 패널 자체의 가운데가 아님)
     const originY = -parseFloat(el.style.top || "0") + window.innerHeight / 2;
     el.style.transformOrigin = `50% ${originY}px`;
-    // 다음 패널이 START(85%)만큼 올라올 때까지는 변화 없음.
-    // 그 뒤 남은 구간(85% → 100%)을 0 → 1로 다시 펼쳐서 씁니다.
-    const START = 0.85;
+    // 다음 패널이 START(70%)만큼 올라올 때까지는 변화 없음.
+    // 그 뒤 남은 구간(70% → 100%)을 0 → 1로 다시 펼쳐서 씁니다.
+    const START = 0.7;
     const t = Math.max(0, (p - START) / (1 - START));
     // 짧은 구간이라 시작과 끝을 부드럽게 이어 주는 곡선(smoothstep)을 씁니다.
     const e = t * t * (3 - 2 * t);
