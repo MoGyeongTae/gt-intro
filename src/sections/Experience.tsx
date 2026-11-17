@@ -58,8 +58,9 @@ function WorkCard({ work }: { work: Work }) {
       )}
       {Array.isArray(description) && description.length > 0 && (
         <ul className="mt-2 space-y-1.5 text-muted">
-          {description.map((d) => (
-            <li key={d} className="flex gap-2.5 leading-relaxed">
+          {description.map((d, i) => (
+            // 같은 문장이 두 번 나와도 되도록 순번을 key로
+            <li key={i}className="flex gap-2.5 leading-relaxed">
               {/* 첫 줄 가운데에 맞춘 둥근 점 */}
               <span aria-hidden className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-accent" />
               <span>{d}</span>

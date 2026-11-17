@@ -32,12 +32,24 @@ export type Project = {
   title: string;
   /** 프로젝트 기간 (예: "2025.03 - 2025.06", 진행 중이면 시작 달만 "2025.09") */
   period?: string;
-  /** 진행 중인 프로젝트면 true → 카드에 "진행중" 배지가 붙고 목록 맨 앞으로 옵니다 */
+  /** 진행 중인 프로젝트면 true → 카드에 "진행중" 배지가 붙어요 (순서는 여기 적은 순서 그대로) */
   ongoing?: boolean;
-  description: string;
+  /** 한 문장이면 문자열, 여러 줄이면 배열 (배열은 점 목록으로 표시) */
+  description: string | string[];
   stack: string[];
-  link?: string;
-  repo?: string;
+  /**
+   * 카드 아래 링크 버튼들. 적은 순서대로 나오고, 첫 번째 버튼이 진하게 강조돼요.
+   * 주소에 github.com이 들어가면 GitHub 아이콘, 아니면 ↗ 아이콘이 붙어요.
+   * 예: links: [{ label: "GitHub", href: "https://github.com/..." }, { label: "사이트", href: "https://..." }]
+   */
+  links?: ProjectLink[];
+};
+
+export type ProjectLink = {
+  /** 버튼에 보이는 글자 (예: "GitHub", "사이트", "데모 영상") */
+  label: string;
+  /** 누르면 새 탭으로 열릴 주소 */
+  href: string;
 };
 
 export const profile = {
@@ -47,7 +59,7 @@ export const profile = {
    * 소개 섹션 옆 사진 (public/ 기준, 예: "/photo.jpg"). 비워 두면 빈 자리 표시가 보여요.
    * 4:5 세로 비율 칸에 꽉 채워 잘리니, 얼굴이 잘리면 photoPosition으로 기준점을 옮겨요.
    */
-  photo: "" as string,
+  photo: "/profile/mgt_profile.jpg",
   /** 사진에서 보여줄 기준점 (CSS object-position, 예: "50% 30%" = 가운데·조금 위쪽) */
   photoPosition: "50% 30%",
   about: [
@@ -70,7 +82,7 @@ export const profile = {
         {
           name: "신규 자사몰 페이지 및 디자인 시스템 개발",
           period: "2023.11 - 2024.04",
-          description: ["프로젝트 기여 : 100%", "슬립큐브라는 신제품 출시와 같이 리브랜딩을 위해 기획", "프로젝트 웹 프론트 전체를 담당하였음", "단순 페이지가 아닌 자사몰인 만큼 Next.js기반으로 개발, 상태관리는 Zustand, React-Query 사용", "리브랜딩 과정에서 디자이너분과 논의한 디자인 시스템도 Storybook을 사용하여 개발", "결제는 기존 페이지와 다르게 토스를 중심으로 개발, 쿠폰 정책등도 완전히 이관"],
+          description: ["프로젝트 기여 : 100%", "슬립큐브라는 신제품 출시와 같이 리브랜딩을 위해 기획", "자사몰 웹 프론트개발 전체를 담당", "단순 페이지가 아닌 자사몰인 만큼 Next.js기반으로 개발, 상태관리는 Zustand, React-Query 사용", "리브랜딩 과정에서 디자이너분과 논의한 디자인 시스템도 Storybook을 사용하여 개발", "결제는 기존 페이지와 다르게 토스를 중심으로 개발, 쿠폰 정책등도 완전히 이관"],
           stack: ["Next.js", "React-Query", "Zustand", "Storybook", "Tailwind CSS", "Vite"],
           // TODO: 실제 주소로 바꾸기 (예시)
         },
@@ -107,7 +119,7 @@ export const profile = {
           name: "초샵 프로젝트",
           period: "2022.05 - 2022.12",
           description: ["초록마을과 M&A를 진행한 후 신규 커머스 페이지가 필요하여 기획된 프로젝트", "정육각 웹 프론트는 Vue 기반이였으나 새로 합류한 팀원들의 선호도에 따라 React기반 Next.js로 전환", "회원과 상품 및 주문 도메인을 담당하여 개발하였음", "Zustand 및 React-Query로 상태관리를 진행하였고 디자인 시스템을 먼저 개발하여 각 도메인 개발에 원활하게 작용할 수 있도록 하였음"],
-          stack: ["React", "Next.js", "Zustand", "React-Query", "Cypress", "Storybook"],
+          stack: ["React", "Next.js", "Styled-Components", "Zustand", "React-Query", "Cypress", "Storybook"],
         },
         {
           name: "커머스 페이지 Vue3 마이그레이션 및 서비스 개발",
@@ -178,16 +190,39 @@ export const profile = {
   ] satisfies Experience[],
   projects: [
     {
-      title: "[외주] 오스랩스(AuthLabs) 설문 작성 및 만족도 데이터 관리 페이지",
+      title: "[외주] Authlabs 설문 작성 및 만족도 데이터 관리 페이지",
       period: "2024.05",
-      description: "설명",
-      stack: ["React", "Vite", "Typescript"],
+      description: ["Authlabs(오스랩스) 외주 프로젝트", "Authlabs가 진행하던 외주 프로젝트에 참여하였음", "기능 중 설문조사 템플릿 관리, 설문조사 UI, 설문조사 데이터 엑셀 다운&업로드 구현 등을 담당",],
+      stack: ["Vue3", "Vite", "Pinia"],
     },
     {
-      title: "로스트아크 게임 경매장 알림 및 시세 차트 프로젝트",
+      title: "로스트아크 게임 경매장 알리미 및 시세 차트 페이지 ( 프로젝트명 : 로아옥션 )",
       period: "2025.02 - 2025.03",
-      description: "설명",
-      stack: ["React", "Vite", "Typescript"],
+      description: ["MMORPG 게임 로스트아크의 경매장에서 아이템 및 가격을 설정해두고 해당 가격 이하의 매물이 올라오면 알 수 있도록 기획된 프로젝트", "사용에 용이하도록 인게임 경매장과 UI를 최대한 비슷하게 가져갔고 유저마다 게임사에서 발급받을 수 있는 API 키를 입력받아 경매장을 지속적으로 읽도록 하였음", "DB는 Firebase에 GCP를 통하여 배포"],
+      stack: ["React", "Vite", "Zustand", "Emotion", "Radix-UI", "Firebase", ],
+      links : [
+        { label : "당시 커뮤니티 홍보링크", href : "https://www.inven.co.kr/board/lostark/4821/104253"}
+      ]
+    },
+    {
+      title: "포스트잇 메모 앱",
+      period: "2026.11",
+      ongoing:true,
+      description: ["휴대폰에서 단순한 메모기능 뿐만 아니라 위젯을 지원하여 배경화면에 포스트잇으로 메모를 붙여놓을 수 있는 앱 프로젝트", "첫 RN 프로젝트로서 앱 공부를 위해 기획 및 개발", "스타일링과 상태관리의 용이함을 위해 웹 프론트부터 쓰던 Zustand와 Tailwind CSS를 채용", "메모 데이터는 별도의 DB대신 SQLite 사용하여 관리", "갤럭시 메모앱을 참고하여 메모의 스타일링을 일부 지원"],
+      stack: ["React-Native", "Expo", "Zustand", "Tailwind CSS"],
+      links : [
+        {label : "Github", href : "https://github.com/MoGyeongTae/gt-memo-app"}
+      ]
+    },
+    {
+      title: "일정 관리 프로젝트",
+      period: "2026.9",
+      ongoing:true,
+      description: ["게임을 같이하는 4명이서 서로의 일정표를 확인하고 같이 게임이 가능한 시간대를 알 수 있고 일주일 종합 일정표를 볼 수 있게 하는 프로젝트", "한명이 본인포함 나머지 3명의 일정을 다 개인적으로 받아서 가능한 시간을 공지해주는걸 보고 기획", "react-big-calendar를 통해 일정표를 관리하고 볼 수 있게 하였음", "서버는 Express, DB는 Supabase를 사용하여 구성하였음", "일정이 등록되거나 하면 디스코드 봇을 이용해 관련 메시지를 보내주게 할 예정"],
+      stack: ["React", "Next.js", "Zustand", "Tailwind CSS", "React-big-calendar", "Express", "Supabase"],
+      links : [
+        {label : "Github", href : "https://github.com/MoGyeongTae/loa-schedule"},
+      ]
     },
     // {
     //   title: "진행 중인 프로젝트명",
@@ -195,6 +230,10 @@ export const profile = {
     //   ongoing: true,
     //   description: "설명",
     //   stack: ["React", "Typescript"],
+    //   links: [
+    //     { label: "GitHub", href: "https://github.com/아이디/저장소" },
+    //     { label: "사이트", href: "https://주소" },
+    //   ],
     // },
   ] satisfies Project[],
   skills: {

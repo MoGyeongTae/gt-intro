@@ -27,51 +27,72 @@ export default function About() {
 }
 
 /**
- * 4:5 세로 사진 칸.
- * 증명사진이 아니어도 정돈돼 보이도록 칸에 꽉 채워 자르고,
- * 아래쪽을 배경색으로 살짝 어둡게 깔아 패널과 자연스럽게 이어지게 합니다.
+ * 사진 카드 — 코드 에디터 창처럼 꾸밈 (히어로의 코드 기호와 같은 분위기)
+ *  ─ 위: 창 버튼 3개
+ *  ─ 가운데: 4:5 사진 (칸에 꽉 채워 자르고, 아래를 살짝 어둡게)
+ *  ─ 뒤: 비껴 깔린 앰버 테두리
+ *  마우스를 올리면 사진이 천천히 살짝 확대되고, 뒤 테두리가 조금 더 벌어짐
  */
 function Photo() {
   return (
-    <div className="relative">
-      {/* 뒤에 살짝 비껴 깔린 앰버 테두리 — 사진에 포인트를 줌 */}
+    <div className="group relative">
+      {/* 뒤에 살짝 비껴 깔린 앰버 테두리 */}
       <div
         aria-hidden
-        className="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl border border-accent-light/40"
+        className="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl border border-accent-light/40 transition-transform duration-500 ease-out group-hover:translate-x-4 group-hover:translate-y-4 motion-reduce:transition-none"
       />
-      <div className="relative aspect-4/5 overflow-hidden rounded-3xl bg-dark ring-1 ring-line-dark">
-        {profile.photo ? (
-          <>
-            <img
-              src={profile.photo}
-              alt={`${profile.name} 사진`}
-              loading="lazy"
-              className="h-full w-full object-cover"
-              style={{ objectPosition: profile.photoPosition }}
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-linear-to-t from-panel-dark/60 via-transparent to-transparent"
-            />
-          </>
-        ) : (
-          // 사진을 넣기 전까지 보이는 빈 자리
-          <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-on-dark-muted/60">
-            <svg
-              aria-hidden
-              viewBox="0 0 24 24"
-              className="h-12 w-12"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.5}
-            >
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" strokeLinecap="round" />
-            </svg>
-            <span className="font-mono text-xs tracking-wide">photo</span>
-          </div>
-        )}
-      </div>
+
+      <figure className="relative overflow-hidden rounded-3xl bg-panel-dark ring-1 ring-line-dark">
+        {/* 에디터 창 윗줄: 창 버튼 3개 */}
+        <div
+          aria-hidden
+          className="flex cursor-default gap-1.5 border-b border-line-dark px-4 py-3 select-none"
+        >
+          <span className="h-2.5 w-2.5 rounded-full bg-[#ef6b5e]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-accent-light" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#5fc56b]" />
+        </div>
+
+        <div className="relative aspect-4/5 overflow-hidden bg-dark">
+          {profile.photo ? (
+            <>
+              <img
+                src={profile.photo}
+                alt={`${profile.name} 사진`}
+                loading="lazy"
+                decoding="async"
+                width={768}
+                height={1007}
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"
+                style={{ objectPosition: profile.photoPosition }}
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-linear-to-t from-panel-dark/60 via-transparent to-transparent"
+              />
+            </>
+          ) : (
+            // 사진을 넣기 전까지 보이는 빈 자리
+            <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-on-dark-muted/60">
+              <svg
+                aria-hidden
+                viewBox="0 0 24 24"
+                className="h-12 w-12"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path
+                  d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <span className="font-mono text-xs tracking-wide">photo</span>
+            </div>
+          )}
+        </div>
+      </figure>
     </div>
   );
 }
