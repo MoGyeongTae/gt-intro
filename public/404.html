@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#141416" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>페이지를 찾을 수 없어요 | 모경태</title>
+    <!-- 없는 주소로 들어왔을 때 Nginx가 보여주는 페이지 (React 없이 단독으로 동작) -->
+    <style>
+      * { box-sizing: border-box; margin: 0; }
+      body {
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: #141416;
+        color: #f6f2ea;
+        font-family: "Pretendard Variable", Pretendard, -apple-system, "Malgun Gothic", sans-serif;
+        text-align: center;
+      }
+      .code {
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-size: 14px;
+        color: rgba(246, 242, 234, 0.55);
+      }
+      h1 {
+        margin-top: 12px;
+        font-size: clamp(56px, 14vw, 96px);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: #fbbf24;
+      }
+      p { margin-top: 8px; font-size: 18px; color: rgba(246, 242, 234, 0.75); }
+      a {
+        display: inline-block;
+        margin-top: 32px;
+        padding: 12px 24px;
+        border-radius: 999px;
+        background: #f6f2ea;
+        color: #202125;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      a:hover { opacity: 0.9; }
+      a:focus-visible { outline: 2px solid #fbbf24; outline-offset: 3px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="code">// page not found</div>
+      <h1>404</h1>
+      <p>요청하신 페이지를 찾을 수 없어요.</p>
+      <a href="/">메인으로 돌아가기</a>
+    </main>
+  </body>
+</html>
