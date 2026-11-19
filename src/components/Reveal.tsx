@@ -61,9 +61,11 @@ function getObserver() {
           reveal(el);
         }
       },
-      // threshold는 0: 요소가 조금이라도 화면(아래 8% 제외)에 들어오면 나타납니다.
+      // threshold는 0: 요소가 조금이라도 화면에 들어오면 바로 나타납니다.
       // 비율(예: 0.15)로 하면 화면보다 아주 긴 요소는 그 비율을 영영 못 채워 안 나타날 수 있어요.
-      { threshold: 0, rootMargin: "0px 0px -8% 0px" },
+      // 화면 아래쪽을 빼고 판정하면(예: -8%) 패널 맨 아래 카드가 늦게 떠서, 빨리 스크롤할 때
+      // 다 나타나기도 전에 다음 패널에 덮이므로 여백 없이 판정함.
+      { threshold: 0, rootMargin: "0px" },
     );
     window.addEventListener("scroll", onScroll, { passive: true });
   }
