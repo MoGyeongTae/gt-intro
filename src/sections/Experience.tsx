@@ -3,6 +3,7 @@ import { profile, type Experience as ExperienceItem, type Work } from "../data/p
 import Panel from "../components/Panel";
 import Reveal from "../components/Reveal";
 import SectionTitle from "../components/SectionTitle";
+import ExternalLink from "../components/ExternalLink";
 
 /** 바깥으로 나가는 화살표 ↗ — 마우스를 올리면 오른쪽 위로 살짝 튀어나감 (group-hover) */
 function ArrowIcon() {
@@ -34,16 +35,13 @@ function WorkCard({ work }: { work: Work }) {
         <h4 className="font-bold">
           {link ? (
             // 링크가 있으면 프로젝트명 자체가 링크 (새 탭)
-            <a
+            <ExternalLink
               href={link}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group rounded-sm underline-offset-4 transition-colors hover:text-accent hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               {name}
               <ArrowIcon />
-              <span className="sr-only">(새 탭에서 열림)</span>
-            </a>
+            </ExternalLink>
           ) : (
             name
           )}

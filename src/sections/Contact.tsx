@@ -2,6 +2,7 @@ import { profile } from "../data/profile";
 import Panel from "../components/Panel";
 import Reveal from "../components/Reveal";
 import SectionTitle from "../components/SectionTitle";
+import ExternalLink from "../components/ExternalLink";
 import { GitHubIcon } from "./Projects";
 
 export default function Contact() {
@@ -22,25 +23,21 @@ export default function Contact() {
           </a>
         )}
         {github && (
-          <a
+          <ExternalLink
             href={github}
-            target="_blank"
-            rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-line-dark px-6 py-3 text-on-dark hover:bg-white/10"
           >
             <GitHubIcon />
             GitHub
-          </a>
+          </ExternalLink>
         )}
         {blog && (
-          <a
+          <ExternalLink
             href={blog}
-            target="_blank"
-            rel="noreferrer"
             className="rounded-full border border-line-dark px-6 py-3 text-on-dark hover:bg-white/10"
           >
             Blog
-          </a>
+          </ExternalLink>
         )}
       </Reveal>
     </Panel>

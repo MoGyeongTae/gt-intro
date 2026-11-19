@@ -2,6 +2,7 @@ import { profile, type Project, type ProjectLink } from "../data/profile";
 import Panel from "../components/Panel";
 import Reveal from "../components/Reveal";
 import SectionTitle from "../components/SectionTitle";
+import ExternalLink from "../components/ExternalLink";
 
 /** "진행중" 배지: 점이 은은하게 퍼지는 애니메이션 (움직임 줄이기 설정이면 멈춤) */
 function OngoingBadge() {
@@ -52,10 +53,8 @@ function ArrowIcon() {
 function LinkButton({ link, primary }: { link: ProjectLink; primary: boolean }) {
   const isGitHub = link.href.includes("github.com");
   return (
-    <a
+    <ExternalLink
       href={link.href}
-      target="_blank"
-      rel="noopener noreferrer"
       className={`group inline-flex min-h-10 items-center gap-1.5 rounded-full px-4 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
         primary
           ? "bg-panel-dark text-on-dark hover:bg-dark"
@@ -65,8 +64,7 @@ function LinkButton({ link, primary }: { link: ProjectLink; primary: boolean }) 
       {isGitHub && <GitHubIcon />}
       {link.label}
       {!isGitHub && <ArrowIcon />}
-      <span className="sr-only">(새 탭에서 열림)</span>
-    </a>
+    </ExternalLink>
   );
 }
 
