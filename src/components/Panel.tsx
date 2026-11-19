@@ -1,6 +1,9 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useCoverProgress } from "../hooks/useCoverProgress";
 
+/** 긴 패널이 멈추기 전에 화면 높이의 몇 %만큼 더 올라갈지 */
+const EXTRA_RATIO = 0.3;
+
 export type PanelTone = "dark" | "light" | "soft";
 
 const toneClass: Record<PanelTone, string> = {
@@ -12,7 +15,7 @@ const toneClass: Record<PanelTone, string> = {
 /**
  * 모서리가 둥근 섹션 패널.
  * 끝까지 스크롤하면 그 자리에 멈추고(sticky), 다음 패널이 그 위를 덮으며 올라옵니다.
- * 화면보다 긴 패널은 아랫부분이 다 보인 뒤에 멈추도록 top 값을 계산합니다.
+ * 화면보다 긴 패널은 아랫부분이 다 보이고 조금 더 올라간 뒤에 멈추도록 top 값을 계산합니다.
  */
 export default function Panel({
   id,
@@ -29,7 +32,15 @@ export default function Panel({
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const update = () => setTop(Math.min(0, window.innerHeight - el.offsetHeight));
+    const update = () => {
+      const vh = window.innerHeight;
+      const h = el.offsetHeight;
+      // 화면보다 긴 패널은 바닥이 화면 바닥에 닿자마자 멈추면, 마지막 내용이
+      // 화면 아래쪽에만 잠깐 보이고 바로 다음 패널에 덮여 버림 (특히 모바일·빠른 스크롤).
+      // 그래서 바닥이 화면 높이의 EXTRA만큼 더 올라간 뒤에 멈추게 함 → 마지막 내용도 화면 가운데쯤까지 올라옴.
+      const extra = h > vh ? vh * EXTRA_RATIO : 0;
+      setTop(Math.min(0, vh - h - extra));
+    };
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
