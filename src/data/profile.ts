@@ -224,6 +224,16 @@ export const profile = {
         {label : "Github", href : "https://github.com/MoGyeongTae/loa-schedule"},
       ]
     },
+    {
+      title: "웹 리듬게임 프로젝트",
+      period: "2026.10",
+      ongoing:true,
+      description: ["웹 기반 리듬게임을 만들고 싶어서 시작하는 프로젝트", "리듬게임 그래픽은 캔버스로 시작하여 Pixi로 전환하여 개발", "별도의 채보 데이터를 통해 게임을 진행할 수 있으며 게임중 채보 데이터에 있는 시간초를 참고하여 판정을 저장함", "채보 데이터는 직접 전부 만들면 좋겠지만 음악을 분석하여 기본적인 박자에 맞는 채보데이터를 만드는 프로젝트와 같이 진행 예정"],
+      stack: ["React", "Vite", "Pixi"],
+      links : [
+        {label : "Github", href : "https://github.com/MoGyeongTae/rhythm-gt"},
+      ]
+    },
     // {
     //   title: "진행 중인 프로젝트명",
     //   period: "2026.10",
