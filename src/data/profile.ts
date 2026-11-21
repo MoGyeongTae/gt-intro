@@ -218,7 +218,7 @@ export const profile = {
       title: "일정 관리 프로젝트",
       period: "2026.9",
       ongoing:true,
-      description: ["게임을 같이하는 4명이서 서로의 일정표를 확인하고 같이 게임이 가능한 시간대를 알 수 있고 일주일 종합 일정표를 볼 수 있게 하는 프로젝트", "한명이 본인포함 나머지 3명의 일정을 다 개인적으로 받아서 가능한 시간을 공지해주는걸 보고 기획", "react-big-calendar를 통해 일정표를 관리하고 볼 수 있게 하였음", "서버는 Express, DB는 Supabase를 사용하여 구성하였음", "일정이 등록되거나 하면 디스코드 봇을 이용해 관련 메시지를 보내주게 할 예정"],
+      description: ["게임을 같이하는 4명이서 서로의 일정표를 확인하고 같이 게임이 가능한 시간대를 알 수 있고 일주일 종합 일정표를 볼 수 있게 하는 프로젝트", "기획, 프론트, 백엔드 전부 담당", "react-big-calendar를 통해 일정표를 관리하고 볼 수 있게 하였음", "서버는 Express, DB는 Supabase를 사용하여 구성하였음", "일정이 등록되거나 하면 디스코드 봇을 이용해 관련 메시지를 보내주게 할 예정"],
       stack: ["React", "Next.js", "Zustand", "Tailwind CSS", "React-big-calendar", "Express", "Supabase"],
       links : [
         {label : "Github", href : "https://github.com/MoGyeongTae/loa-schedule"},
