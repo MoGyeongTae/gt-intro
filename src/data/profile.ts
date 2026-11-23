@@ -182,8 +182,8 @@ export const profile = {
         {
           name: "MathFreeOn 플랫폼 코드 에디터 개발",
           period: "2019.03 - 2019.06",
-          description: ["프로젝트 기여 : 100%","MathFreeOn 플랫폼에서 코드를 편집하고 실행화면을 확인할 수 있는 화면이 필요하여 기획", "CodePen, JSFiddle을 참고하여 UI/UX 및 기능 구성", "코드 하이라이팅, 테마 등의 기능이 필요해 Ace Editor을 사용하여 구현", "코드 텍스트를 서버에 보낸 후 결과를 받아서 별도 UI에 렌더링 하였음"],
-          stack: ["React", "Ace Editor", "Webpack"],
+          description: ["프로젝트 기여 : 100%","MathFreeOn 플랫폼에서 코드를 편집하고 실행화면을 확인할 수 있는 화면이 필요하여 기획", "CodePen, JSFiddle을 참고하여 UI/UX 및 기능 구성", "코드 하이라이팅, 테마 등의 기능이 필요해 Ace Editor을 사용하여 구현", "코드 텍스트를 서버에 보낸 후 결과를 받아서 별도 UI에 렌더링 하였음", "단순 에디터 기능 뿐만 아니라 rc-tree로 파일트리 기능까지 제공하여 에디터로 편집한 내용을 정리할 수 있었음"],
+          stack: ["React", "Ace Editor", "Webpack", "rc-tree"],
         },
       ],
     },
@@ -218,7 +218,7 @@ export const profile = {
       title: "일정 관리 프로젝트",
       period: "2026.9",
       ongoing:true,
-      description: ["게임을 같이하는 4명이서 서로의 일정표를 확인하고 같이 게임이 가능한 시간대를 알 수 있고 일주일 종합 일정표를 볼 수 있게 하는 프로젝트", "기획, 프론트, 백엔드 전부 담당", "react-big-calendar를 통해 일정표를 관리하고 볼 수 있게 하였음", "서버는 Express, DB는 Supabase를 사용하여 구성하였음", "일정이 등록되거나 하면 디스코드 봇을 이용해 관련 메시지를 보내주게 할 예정"],
+      description: ["게임을 같이하는 4명이서 서로의 일정표를 확인하고 같이 게임이 가능한 시간대를 알 수 있고 일주일 종합 일정표를 볼 수 있게 하는 프로젝트", "기획, 프론트, 백엔드 전부 담당", "react-big-calendar를 통해 일정표를 관리하고 볼 수 있게 하였음", "서버는 Express, DB는 Supabase를 사용하여 구성하였음", "일정을 Claude 등을 통해 조회 등을 할 수 있게 추후에 MCP 서버를 별도로 구현할 예정"],
       stack: ["React", "Next.js", "Zustand", "Tailwind CSS", "React-big-calendar", "Express", "Supabase"],
       links : [
         {label : "Github", href : "https://github.com/MoGyeongTae/loa-schedule"},
@@ -253,6 +253,7 @@ export const profile = {
     Styling: ["Styled-Components", "Emotion", "Tailwind CSS", "CSS / Sass"],
     Building: ["Vite", "Webpack", "Turborepo"],
     Collaboration: ["Figma", "Jira", "Notion", "Confluence", "Trello"],
+    "AI Tools" : ["Claude", "Cursor"],
   } as Record<string, string[]>,
   contact: {
     email: "alska6416@gmail.com",
