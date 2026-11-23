@@ -182,8 +182,8 @@ export const profile = {
         {
           name: "MathFreeOn 플랫폼 코드 에디터 개발",
           period: "2019.03 - 2019.06",
-          description: ["프로젝트 기여 : 100%","MathFreeOn 플랫폼에서 코드를 편집하고 실행화면을 확인할 수 있는 화면이 필요하여 기획", "CodePen, JSFiddle을 참고하여 UI/UX 및 기능 구성", "코드 하이라이팅, 테마 등의 기능이 필요해 Ace Editor을 사용하여 구현", "코드 텍스트를 서버에 보낸 후 결과를 받아서 별도 UI에 렌더링 하였음"],
-          stack: ["React", "Ace Editor", "Webpack"],
+          description: ["프로젝트 기여 : 100%","MathFreeOn 플랫폼에서 코드를 편집하고 실행화면을 확인할 수 있는 화면이 필요하여 기획", "CodePen, JSFiddle을 참고하여 UI/UX 및 기능 구성", "코드 하이라이팅, 테마 등의 기능이 필요해 Ace Editor을 사용하여 구현", "코드 텍스트를 서버에 보낸 후 결과를 받아서 별도 UI에 렌더링 하였음", "단순 에디터 기능 뿐만 아니라 rc-tree로 파일트리 기능까지 제공하여 에디터로 편집한 내용을 정리할 수 있었음"],
+          stack: ["React", "Ace Editor", "Webpack", "rc-tree"],
         },
       ],
     },
@@ -253,6 +253,7 @@ export const profile = {
     Styling: ["Styled-Components", "Emotion", "Tailwind CSS", "CSS / Sass"],
     Building: ["Vite", "Webpack", "Turborepo"],
     Collaboration: ["Figma", "Jira", "Notion", "Confluence", "Trello"],
+    "AI Tools" : ["Claude", "Cursor"],
   } as Record<string, string[]>,
   contact: {
     email: "alska6416@gmail.com",
